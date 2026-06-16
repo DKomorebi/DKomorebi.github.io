@@ -28,8 +28,7 @@ permalink: /links/
 
 ## 申请友链
 
-想和「雾水」交换友链？到 GitHub 提个 issue 填一下就行：
+想和「滴墨」交换友链？到 GitHub 提个 issue 填一下就行：
 
-<p><a class="more-link" href="https://github.com/JinRudy/JinRudy.github.io/issues/new?labels=%E5%8F%8B%E9%93%BE&template=apply-friend-link.md&title=%5B%E5%8F%8B%E9%93%BE%5D" target="_blank" rel="noopener" data-ripple>📮 提交友链申请 →</a></p>
 
-> 小约定：站点内容健康、能正常访问；并已把本站(**雾水** · `https://a.minifog.org.cn/`)加进你的友链。
+> 小约定：站点内容健康、能正常访问；并已把本站(**滴墨** · `https://a.minifog.org.cn/`)加进你的友链。
