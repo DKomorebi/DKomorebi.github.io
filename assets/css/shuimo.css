@@ -309,6 +309,12 @@ img{ max-width:100%; height:auto; }
 .cate-list a{ color:var(--text); } .cate-list a:hover{ color:var(--accent); }
 .cate-list .d{ color:var(--text-faint); font-size:13px; white-space:nowrap; }
 
+/* 树状分类 */
+.tree-node { margin-left: 1rem; border-left: 1px solid var(--line); padding-left: 0.5rem; }
+.tree-node summary { cursor: pointer; padding: 0.5rem; list-style: none; }
+.tree-node summary::before { content: '▶ '; font-size: 0.8em; }
+.tree-node[open] > summary::before { content: '▼ '; }
+
 /* 归档 / 友链 复用 cate 风格 */
 .links-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; list-style:none; padding:0; margin:24px 0; }
 .link-card{ display:flex; gap:12px; align-items:center; padding:14px 16px; height:92px; box-sizing:border-box; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--surface); transition:all .3s; }
