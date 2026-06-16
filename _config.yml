@@ -4,16 +4,16 @@
 baseurl:
 url: https://a.minifog.org.cn
 date_format: "ordinal"
-title: 雾水
-subtitle: "WeChat：小小小雾水"
-description: "雾水的个人博客"
-keywords: 雾水, Shui Wu, wushui
+title: 滴墨
+subtitle: "WeChat：木漏れ日"
+description: "木漏れ日的个人博客"
+keywords: 滴墨,Mo Di , dimo
 timezone: Asia/Shanghai
 encoding: "utf-8"
 # 页面左下角显示的年份
-since: 2024
+since: 2026
 # 源码仓库，请替换成自己的
-repository: JinRudy/JinRudy.github.io
+repository: duke123123/duke123123.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
@@ -60,8 +60,8 @@ highlight_theme: github
 author: Wu Shui
 organization: 
 organization_url: 
-github_username: JinRudy
-github_username_url: https://a.minifog.org.cn/JinRudy
+github_username: duke123123
+github_username_url: https://github.com/duke123123
 location: ShangHai, China
 email: WushuiOvO@qq.com
 
@@ -130,19 +130,19 @@ gitment:
         client_secret: a1195355966ea6d29723a4c4eb8d5c72e9401ea9
 # gitalk 配置参考：https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: JinRudy
+    owner: duke123123
     repo: github.io.config
     clientID: c60064b0fcfeec5c1eab
     clientSecret: be242fd3523814e479b990f08079316da2be606d
 # utterances 配置参考：https://utteranc.es/
 utterances:
-    repo: JinRudy/github.io.config
+    repo: duke123123/github.io.config
 # beaudar 配置参考：https://beaudar.lipk.org/
 beaudar:
-    repo: JinRudy/github.io.config
+    repo: duke123123/github.io.config
 # giscus 配置参考：https://giscus.app/zh-CN
 giscus:
-    repo: JinRudy/github.io.config
+    repo: duke123123/github.io.config
     repo-id: R_kgDOKNmYlQ
     category: Announcements
     category-id: DIC_kwDOKNmYlc4CY_T8
