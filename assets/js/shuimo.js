@@ -313,6 +313,17 @@
     tocVis();
   })();
 
+  /* ---- 归档折叠 ---- */
+  (function () {
+    var years = document.querySelectorAll('.tl-year');
+    years.forEach(function (year) {
+      year.addEventListener('click', function () {
+        var group = year.closest('.tl-group');
+        if (group) group.classList.toggle('open');
+      });
+    });
+  })();
+
   /* ---- 回到顶部 ---- */
   (function () {
     var btt = document.getElementById('back-to-top');

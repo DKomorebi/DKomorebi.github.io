@@ -15,10 +15,10 @@ layout: default
       {% for post in site.posts %}
         {% capture y %}{{ post.date | date: '%Y' }}{% endcapture %}
         {% if y != last_year %}
-          {% unless forloop.first %}</div></details></div>{% endunless %}
-          <div class="tl-group">
-            <details {% if forloop.first %}open{% endif %}>
-              <summary class="tl-year">{{ y }}</summary>
+          {% unless forloop.first %}</div></div></div>{% endunless %}
+          <div class="tl-group {% if forloop.first %}open{% endif %}">
+            <div class="tl-year">{{ y }}</div>
+            <div class="tl-items-wrap">
               <div class="tl-items">
           {% assign last_year = y %}
         {% endif %}
@@ -28,7 +28,7 @@ layout: default
           {% if post.categories.size > 0 %}<span class="tl-cat">{{ post.categories.first }}</span>{% endif %}
         </a>
       {% endfor %}
-      {% if site.posts.size > 0 %}</div></details></div>{% endif %}
+      {% if site.posts.size > 0 %}</div></div></div>{% endif %}
     </div>
     {% if site.posts.size == 0 %}<p style="color:var(--text-soft)">还没有文章。</p>{% endif %}
   </div>
