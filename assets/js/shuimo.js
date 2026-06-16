@@ -312,4 +312,16 @@
     addEventListener('scroll', tocVis, { passive: true });
     tocVis();
   })();
+
+  /* ---- 回到顶部 ---- */
+  (function () {
+    var btt = document.getElementById('back-to-top');
+    if (!btt) return;
+    addEventListener('scroll', function () {
+      btt.classList.toggle('show', window.scrollY > 300);
+    }, { passive: true });
+    btt.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
 })();

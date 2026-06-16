@@ -349,7 +349,8 @@ img{ max-width:100%; height:auto; }
 /* ---------- 归档时间线 ---------- */
 .timeline{ margin-top:6px; }
 .tl-group{ display:grid; grid-template-columns:88px 1fr; gap:0 26px; }
-.tl-year{ font-family:var(--serif); font-size:26px; font-weight:700; color:var(--accent); position:sticky; top:84px; align-self:start; padding-top:6px; }
+.tl-year{ font-family:var(--serif); font-size:26px; font-weight:700; color:var(--accent); position:sticky; top:84px; align-self:start; padding-top:6px; cursor:pointer; list-style:none; }
+.tl-year::-webkit-details-marker{ display:none; }
 .tl-items{ border-left:2px solid var(--line); padding:0 0 26px 26px; }
 .tl-item{ display:flex; align-items:baseline; gap:14px; padding:11px 0; color:var(--text); position:relative; transition:transform .3s, color .3s; }
 .tl-item::before{ content:""; position:absolute; left:-33px; top:17px; width:9px;height:9px; border-radius:50%; background:var(--bg); border:2px solid var(--accent); transition:all .3s; }
@@ -405,4 +406,31 @@ mark{ background:color-mix(in srgb,var(--accent) 28%, transparent); color:inheri
   *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
   [data-reveal]{ opacity:1; transform:none; }
   .cursor-glow, .fog{ display:none; }
+}
+
+/* ---------- 回到顶部 ---------- */
+.back-to-top {
+  position: fixed; bottom: 40px; right: 40px;
+  width: 44px; height: 44px;
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--line); border-radius: 50%;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08); z-index: 99;
+}
+.back-to-top.show { opacity: 1; visibility: visible; bottom: 50px; }
+.back-to-top:hover { background: var(--bg-soft); border-color: var(--accent); color: var(--accent); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.back-to-top svg { width: 24px; height: 24px; }
+
+/* 水墨韵味微调：使用模糊阴影模拟墨迹 */
+.back-to-top::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  background: var(--accent); opacity: 0; transition: opacity 0.3s; z-index: -1;
+  filter: blur(8px);
+}
+.back-to-top:hover::after { opacity: 0.1; }
+
+@media (max-width: 720px) {
+  .back-to-top { bottom: 30px; right: 20px; width: 40px; height: 40px; }
+  .back-to-top.show { bottom: 34px; }
 }
