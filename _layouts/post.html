@@ -37,10 +37,25 @@ layout: default
         原文链接：<a href="{{ site.url }}{{ page.url }}">{{ site.url }}{{ page.url }}</a>
       </div>
 
-      {% if page.previous or page.next %}
+      {% assign prev_post = page.previous %}
+      {% assign next_post = page.next %}
+      {% if page.category_path %}
+        {% assign posts_in_cat = site.posts | where: "category_path", page.category_path | reverse %}
+        {% for post in posts_in_cat %}
+          {% if post.url == page.url %}
+            {% assign prev_idx = forloop.index0 | minus: 1 %}
+            {% assign next_idx = forloop.index0 | plus: 1 %}
+            {% if prev_idx >= 0 %}{% assign prev_post = posts_in_cat[prev_idx] %}{% endif %}
+            {% if next_idx < posts_in_cat.size %}{% assign next_post = posts_in_cat[next_idx] %}{% endif %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% if prev_post or next_post %}
       <nav class="post-nav">
-        {% if page.previous %}<a href="{{ page.previous.url }}" data-ripple><span class="label">← 上一篇</span><span class="t">{{ page.previous.title }}</span></a>{% endif %}
-        {% if page.next %}<a href="{{ page.next.url }}" data-ripple><span class="label">下一篇 →</span><span class="t">{{ page.next.title }}</span></a>{% endif %}
+        {% if prev_post %}<a href="{{ prev_post.url }}" data-ripple><span class="label">← 上一篇</span><span class="t">{{ prev_post.title }}</span></a>{% endif %}
+        {% if next_post %}<a href="{{ next_post.url }}" data-ripple><span class="label">下一篇 →</span><span class="t">{{ next_post.title }}</span></a>{% endif %}
       </nav>
       {% endif %}
     </div>
