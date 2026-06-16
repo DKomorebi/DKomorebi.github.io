@@ -310,10 +310,31 @@ img{ max-width:100%; height:auto; }
 .cate-list .d{ color:var(--text-faint); font-size:13px; white-space:nowrap; }
 
 /* 树状分类 */
-.tree-node { margin-left: 1rem; border-left: 1px solid var(--line); padding-left: 0.5rem; }
-.tree-node summary { cursor: pointer; padding: 0.5rem; list-style: none; }
-.tree-node summary::before { content: '▶ '; font-size: 0.8em; }
-.tree-node[open] > summary::before { content: '▼ '; }
+.tree-categories { margin-top: 10px; }
+.tree-node { margin-bottom: 8px; border-radius: var(--radius-sm); overflow: hidden; }
+.tree-node summary { 
+  cursor: pointer; padding: 10px 16px; list-style: none; outline: none; 
+  font-family: var(--serif); font-size: 18px; color: var(--accent); font-weight: 600;
+  background: var(--bg-soft); border-left: 3px solid var(--accent);
+  display: flex; align-items: center; gap: 8px; user-select: none;
+  transition: all 0.3s ease; position: relative; z-index: 1;
+}
+.tree-node summary::-webkit-details-marker { display: none; }
+.tree-node summary::before { 
+  content: ''; display: inline-block; width: 0; height: 0; 
+  border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--accent);
+  transition: transform 0.3s ease; transform-origin: center;
+}
+.tree-node[open] > summary::before { transform: rotate(90deg); }
+.tree-node summary:hover { background: color-mix(in srgb, var(--accent-soft) 60%, transparent); }
+.tree-node > ul { 
+  margin: 0; padding: 8px 16px 8px 32px; list-style: none;
+  animation: treeSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes treeSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* 归档 / 友链 复用 cate 风格 */
 .links-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; list-style:none; padding:0; margin:24px 0; }
