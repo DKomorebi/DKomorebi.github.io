@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://a.minifog.org.cn
+url: https://duke123123.github.io
 date_format: "ordinal"
 title: 滴墨
 subtitle: "WeChat：木漏れ日"
@@ -40,7 +40,7 @@ components:
     # 修改图片请替换 assets/images/qrcode.jpg
     qrcode:
         enabled: true
-        image_alt: wushui
+        image_alt: dimo
     # 维基索引页使用哪种视图，支持 列表（list）/分类（cate）
     wiki:
         view: cate
@@ -57,13 +57,13 @@ highlight_theme: github
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: Wu Shui
+author: Dimo
 organization: 
 organization_url: 
-github_username: JinRudy
-github_username_url: https://a.minifog.org.cn/JinRudy
-location: ShangHai, China
-email: WushuiOvO@qq.com
+github_username: Komorebi
+github_username_url: https://github.com/duke123123
+location: Hangzhou, China
+email: 1141185146O@qq.com
 
 # ---------------- #
 #    Navigation    #
@@ -130,19 +130,19 @@ gitment:
         client_secret: a1195355966ea6d29723a4c4eb8d5c72e9401ea9
 # gitalk 配置参考：https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: JinRudy
+    owner: Komorebi
     repo: github.io.config
     clientID: c60064b0fcfeec5c1eab
     clientSecret: be242fd3523814e479b990f08079316da2be606d
 # utterances 配置参考：https://utteranc.es/
 utterances:
-    repo: JinRudy/github.io.config
+    repo: Komorebi/github.io.config
 # beaudar 配置参考：https://beaudar.lipk.org/
 beaudar:
-    repo: JinRudy/github.io.config
+    repo: Komorebi/github.io.config
 # giscus 配置参考：https://giscus.app/zh-CN
 giscus:
-    repo: JinRudy/github.io.config
+    repo: Komorebi/github.io.config
     repo-id: R_kgDOKNmYlQ
     category: Announcements
     category-id: DIC_kwDOKNmYlc4CY_T8

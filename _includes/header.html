@@ -23,7 +23,7 @@
 
     <link rel="canonical" href="{{ page.url | prepend: site.url }}">
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.url }}{{ site.subscribe_rss }}">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/dimo.svg">
 
     <!-- SEO / Open Graph -->
     {% if page.title %}
@@ -61,7 +61,10 @@
     <div class="progress" id="progress"></div>
 
     <header class="site-header">
-        <a class="brand" href="/" title="{{ site.title }}" data-ripple><span class="drop"></span>{{ site.title }}</a>
+        <a class="brand" href="/" title="{{ site.title }}" data-ripple>
+          <img src="/dimo.svg" alt="logo" style="width: 28px; height: 28px; margin-right: 2px;">
+          {{ site.title }}
+        </a>
         <nav class="nav" id="nav" role="navigation">
             {% for nav in site.navs %}
             <a class="navlink {% if page.menu == nav.label %}active{% endif %}" href="{{ nav.href }}" title="{{ nav.label }}">{{ nav.label }}</a>
