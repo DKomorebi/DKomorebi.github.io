@@ -10,8 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 升级到了 @v4.2.2+ 版本，彻底解决 Node 20 废弃的 Warning
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v4
 
       - name: Install system dependencies
         run: |
@@ -20,31 +19,25 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: '3.3'
           bundler-cache: true
 
-      # 【核心修复步骤】在 build 之前强行清一下缓存并更新可能冲突的 Gem
-      - name: Update bundler and gems
-        run: |
-          gem update --system
-          bundle update
-
-      # 升级到了支持 Node 24 的最新版 setup-node
-      - uses: actions/setup-node@v4.1.0
+      - uses: actions/setup-node@v4
         with:
-          node-version: '24' # 顺应 GitHub 趋势，直接用 Node 24
+          node-version: '20'
           cache: 'npm'
 
       - run: npm install
 
-      # 如果你的脚本里有调用本地编译，执行转换
-      - run: npm run convert-webp || echo "Skip if command not found"
+      - run: npm run convert-webp
 
       - run: bundle exec jekyll build
 
-      - run: npm run post-build || echo "Skip if command not found"
+      - run: npm run post-build
 
       - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site/
 
   deploy:
     environment:
