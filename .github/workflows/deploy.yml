@@ -11,19 +11,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # 1. 在系统底层安装 webp 工具，防止依赖底层工具的 npm 脚本报 127 错误
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webp
+
+      # 2. 修复了 bundler-cache 的拼写错误
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
-          bundle-cache: true
+          bundler-cache: true # 之前少写了 'r'
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
+
       - run: npm install
+
+      # 3. 如果这一步依然报错，请检查你本地 package.json 的 scripts 里是否有 "convert-webp"
       - run: npm run convert-webp
+
       - run: bundle exec jekyll build
+
       - run: npm run post-build
+
       - uses: actions/upload-pages-artifact@v3
+
   deploy:
     environment:
       name: github-pages
