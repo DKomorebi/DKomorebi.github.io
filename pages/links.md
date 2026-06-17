@@ -26,9 +26,3 @@ permalink: /links/
 <p style="color:var(--text-soft)">还没有友链。想交换链接的朋友，欢迎在 GitHub 提 issue 申请。</p>
 {% endif %}
 
-## 申请友链
-
-想和「滴墨」交换友链？到 GitHub 提个 issue 填一下就行：
-
-
-> 小约定：站点内容健康、能正常访问；并已把本站(**滴墨** · `https://a.minifog.org.cn/`)加进你的友链。
