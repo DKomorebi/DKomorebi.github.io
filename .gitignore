@@ -9,3 +9,5 @@ _site/
 vendor/bundle/
 *.gem
 /.obsidian/
+
+/template/Post Template.md
