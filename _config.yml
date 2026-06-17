@@ -13,7 +13,7 @@ encoding: "utf-8"
 # 页面左下角显示的年份
 since: 2026
 # 源码仓库，请替换成自己的
-repository: duke123123/duke123123.github.io
+repository: DKomorebi/DKomorebi.github.io
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
@@ -61,7 +61,7 @@ author: Dimo
 organization: 
 organization_url: 
 github_username: Komorebi
-github_username_url: https://github.com/duke123123
+github_username_url: https://github.com/DKomorebi
 location: Hangzhou, China
 email: 1141185146@qq.com
 
