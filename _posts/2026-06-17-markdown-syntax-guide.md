@@ -101,6 +101,12 @@ $$
 \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 
+**示例：敏捷宣言公式化表达**
+\[\text{个体和互动} \quad > \quad \text{过程和工具}\] 
+\[\text{可工作的软件} \quad > \quad \text{详尽的文档}\] 
+\[\text{客户合作} \quad > \quad \text{合同谈判}\] 
+\[\text{响应变化} \quad > \quad \text{遵循计划}\]
+
 ---
 
 ## 7. 进阶扩展 (本博客特有)
