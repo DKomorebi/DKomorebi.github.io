@@ -54,6 +54,21 @@
     {"@context":"https://schema.org","@type":"BlogPosting","headline":{{ page.title | jsonify }},"datePublished":"{{ page.date | date_to_xmlschema }}","author":{"@type":"Person","name":{{ site.author | jsonify }}},"publisher":{"@type":"Organization","name":{{ site.title | jsonify }}},"mainEntityOfPage":"{{ page.url | prepend: site.url }}"{% if page.description %},"description":{{ page.description | jsonify }}{% endif %}{% if page.cover %},"image":{{ page.cover | jsonify }}{% endif %}}
     </script>
     {% endif %}
+    <!-- MathJax：数学公式支持 -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body class="{{ page.class }}">
     <div class="fog"><span class="a"></span><span class="b"></span><span class="c"></span></div>
