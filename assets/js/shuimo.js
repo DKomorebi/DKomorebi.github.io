@@ -229,7 +229,7 @@
     }
     function render() {
       load().then(function (mermaid) {
-        nodes.forEach(function (el) { el.removeAttribute('data-processed'); el.innerHTML = el.getAttribute('data-src'); });
+        nodes.forEach(function (el) { el.removeAttribute('data-processed'); el.textContent = el.getAttribute('data-src'); });
         var dark = root.dataset.theme === 'dark';
         var font = '-apple-system,"PingFang SC","Microsoft YaHei",system-ui,sans-serif';
         var vars = dark ? {
