@@ -10,8 +10,7 @@ vendor/bundle/
 *.gem
 /.obsidian/
 
-/template/Post Template.md
-/template/
+
 /node_modules/.bin/csv2json
 /node_modules/.bin/csv2json.cmd
 /node_modules/.bin/csv2json.ps1
