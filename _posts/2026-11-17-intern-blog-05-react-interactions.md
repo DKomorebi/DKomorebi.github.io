@@ -17,7 +17,7 @@ mindmap2: false
 
 静态站也可以有交互：浏览器已经拿到文章数组，用户搜索时不必请求服务器。这一篇跟踪一次输入如何变成页面更新。
 
-> 本文是「实习博客实战」系列第 5 / 7 篇。文中的 src、docs、package.json 等路径均相对于拾页 Demo 项目根目录。
+> 本文是「实习博客实战」系列第 5 / 8 篇。文中的 src、docs、package.json 等路径均相对于拾页 Demo 项目根目录。
 
 ## 系列导航
 
@@ -28,6 +28,7 @@ mindmap2: false
 5. [实习博客实战（五）：用 React 实现搜索、分类与排序]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
 6. [实习博客实战（六）：Express、PostgreSQL 与 TypeORM 接入路线]({% post_url 2026-11-17-intern-blog-06-express-postgresql-typeorm %})
 7. [实习博客实战（七）：编译、验收、问题排查与实习练习]({% post_url 2026-11-17-intern-blog-07-build-check-practice %})
+8. [实习博客实战（八）：全部页面与组件源码归档]({% post_url 2026-11-17-intern-blog-08-pages-components-source %})
 
 ## 把一次搜索从头跟到尾
 
