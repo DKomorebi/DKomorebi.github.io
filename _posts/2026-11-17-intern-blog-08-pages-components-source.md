@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "实习博客实战（八）：全部页面与组件源码归档"
+title: Next.js博客（八）：全部页面与组件源码归档
 date: 2026-11-17 09:07:00 +0800
-categories: ["实习项目"]
-category_path: "开发/实习项目/博客系统"
-description: "集中归档拾页博客的全部页面、组件、全局样式与依赖数据，附文件索引和完整源码，方便对照学习与复建。"
-keywords: "Next.js, React, 页面源码, 组件源码, TypeScript, Tailwind CSS"
-cover: null
+categories:
+  - 实习项目
+category_path: 开发/实习项目/博客系统
+description: 集中归档拾页博客的全部页面、组件、全局样式与依赖数据，附文件索引和完整源码，方便对照学习与复建。
+keywords: Next.js, React, 页面源码, 组件源码, TypeScript, Tailwind CSS
+cover:
 mermaid: false
 sequence: false
 flow: false

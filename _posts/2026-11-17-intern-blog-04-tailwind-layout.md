@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "实习博客实战（四）：Tailwind CSS 布局、响应式与封面组件"
+title: Next.js博客（四）：Tailwind CSS 布局、响应式与封面组件
 date: 2026-11-17 09:03:00 +0800
-categories: ["实习项目"]
-category_path: "开发/实习项目/博客系统"
-description: "拆解文章卡片的工具类、响应式断点、主题变量和六种纯 CSS 封面，附样式与组件完整源码。"
-keywords: "Tailwind CSS, CSS, 响应式, Grid, 主题变量"
-cover: null
+categories:
+  - 实习项目
+category_path: 开发/实习项目/博客系统
+description: 拆解文章卡片的工具类、响应式断点、主题变量和六种纯 CSS 封面，附样式与组件完整源码。
+keywords: Tailwind CSS, CSS, 响应式, Grid, 主题变量
+cover:
 mermaid: false
 sequence: false
 flow: false

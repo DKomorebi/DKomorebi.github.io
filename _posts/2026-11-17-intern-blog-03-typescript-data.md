@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "实习博客实战（三）：TypeScript 类型设计与文章数据建模"
+title: Next.js博客（三）：TypeScript 类型设计与文章数据建模
 date: 2026-11-17 09:02:00 +0800
-categories: ["实习项目"]
-category_path: "开发/实习项目/博客系统"
-description: "结合 Post、Section、Category 和查询函数，理解接口、联合类型、可选属性、泛型及静态检查的边界。"
-keywords: "TypeScript, interface, 联合类型, 泛型, 数据建模"
-cover: null
+categories:
+  - 实习项目
+category_path: 开发/实习项目/博客系统
+description: 结合 Post、Section、Category 和查询函数，理解接口、联合类型、可选属性、泛型及静态检查的边界。
+keywords: TypeScript, interface, 联合类型, 泛型, 数据建模
+cover:
 mermaid: false
 sequence: false
 flow: false

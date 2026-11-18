@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "实习博客实战（二）：Next.js 路由、静态导出与页面完整源码"
+title: Next.js博客（二）：Next.js 路由、静态导出与页面完整源码
 date: 2026-11-17 09:01:00 +0800
-categories: ["实习项目"]
-category_path: "开发/实习项目/博客系统"
-description: "用首页、详情页、归档和关于页讲解 App Router、动态参数、服务端组件与静态路径生成。"
-keywords: "Next.js, App Router, 静态导出, 动态路由, 页面源码"
-cover: null
+categories:
+  - 实习项目
+category_path: 开发/实习项目/博客系统
+description: 用首页、详情页、归档和关于页讲解 App Router、动态参数、服务端组件与静态路径生成。
+keywords: Next.js, App Router, 静态导出, 动态路由, 页面源码
+cover:
 mermaid: false
 sequence: false
 flow: false

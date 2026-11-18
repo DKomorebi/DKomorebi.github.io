@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "实习博客实战（五）：用 React 实现搜索、分类与排序"
+title: Next.js博客（五）：用 React 实现搜索、分类与排序
 date: 2026-11-17 09:04:00 +0800
-categories: ["实习项目"]
-category_path: "开发/实习项目/博客系统"
-description: "逐步跟踪受控输入、useState、filter、sort 与 map，完成可组合筛选和可恢复的空状态。"
-keywords: "React, useState, 搜索, 分类筛选, 排序, 客户端组件"
-cover: null
+categories:
+  - 实习项目
+category_path: 开发/实习项目/博客系统
+description: 逐步跟踪受控输入、useState、filter、sort 与 map，完成可组合筛选和可恢复的空状态。
+keywords: React, useState, 搜索, 分类筛选, 排序, 客户端组件
+cover:
 mermaid: false
 sequence: false
 flow: false

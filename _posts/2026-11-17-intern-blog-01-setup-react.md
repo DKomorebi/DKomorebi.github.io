@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "实习博客实战（一）：项目搭建与 React 组件入门"
+title: Next.js博客（一）：项目搭建与 React 组件入门
 date: 2026-11-17 09:00:00 +0800
-categories: ["实习项目"]
-category_path: "开发/实习项目/博客系统"
-description: "从六种技术的分工入手，运行静态博客，理解 JSX、组件、props 与公共布局，并附完整配置源码。"
-keywords: "实习, 博客, Next.js, React, JSX, props, 项目搭建"
-cover: null
+categories:
+  - 实习项目
+category_path: 开发/实习项目/博客系统
+description: 从六种技术的分工入手，运行静态博客，理解 JSX、组件、props 与公共布局，并附完整配置源码。
+keywords: 博客, Next.js, React, JSX, props, 项目搭建
+cover:
 mermaid: false
 sequence: false
 flow: false

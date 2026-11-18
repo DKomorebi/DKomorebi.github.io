@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "实习博客实战（六）：Express、PostgreSQL 与 TypeORM 接入路线"
+title: Next.js博客（六）：Express、PostgreSQL 与 TypeORM 接入路线
 date: 2026-11-17 09:05:00 +0800
-categories: ["实习项目"]
-category_path: "开发/实习项目/博客系统"
-description: "规划静态 Demo 到完整博客的演进，说明请求链路、目录分层、接口契约、数据库迁移和部署选择。"
-keywords: "Express, PostgreSQL, TypeORM, API, 数据库迁移, 全栈"
-cover: null
+categories:
+  - 实习项目
+category_path: 开发/实习项目/博客系统
+description: 规划静态 Demo 到完整博客的演进，说明请求链路、目录分层、接口契约、数据库迁移和部署选择。
+keywords: Express, PostgreSQL, TypeORM, API, 数据库迁移, 全栈
+cover:
 mermaid: false
 sequence: false
 flow: false

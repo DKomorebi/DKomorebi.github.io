@@ -1,12 +1,13 @@
 ---
 layout: post
-title: "实习博客实战（七）：编译、验收、问题排查与实习练习"
+title: Next.js博客（七）：编译、验收、问题排查与实习练习
 date: 2026-11-17 09:06:00 +0800
-categories: ["实习项目"]
-category_path: "开发/实习项目/博客系统"
-description: "记录静态构建与浏览器检查结果，给出排错表和六组练习，验证自己真正理解了项目。"
-keywords: "Next.js, 构建, 验收, 调试, 实习, 学习路线"
-cover: null
+categories:
+  - 实习项目
+category_path: 开发/实习项目/博客系统
+description: 记录静态构建与浏览器检查结果，给出排错表和六组练习，验证自己真正理解了项目。
+keywords: Next.js, 构建, 验收, 调试, 实习, 学习路线
+cover:
 mermaid: false
 sequence: false
 flow: false
