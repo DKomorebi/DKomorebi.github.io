@@ -1,340 +1,169 @@
 ---
 layout: post
-title: Next.js博客（四）：Tailwind CSS 布局、响应式与封面组件
+title: NextBlog（四）：Tailwind CSS、DaisyUI 与简约页面
 date: 2026-11-17 09:03:00 +0800
 categories:
-  - 实习项目
+- 实习项目
 category_path: 开发/实习项目/博客系统
-description: 拆解文章卡片的工具类、响应式断点、主题变量和六种纯 CSS 封面，附样式与组件完整源码。
-keywords: Tailwind CSS, CSS, 响应式, Grid, 主题变量
-cover:
+description: 结合当前文章卡片、Hero、图标和双主题学习样式组织。
+keywords: NextBlog, Next.js, TypeScript, Tailwind CSS, DaisyUI, Express, PostgreSQL
+cover: null
 mermaid: false
 sequence: false
 flow: false
 mathjax: false
 mindmap: false
 mindmap2: false
+last_modified_at: 2026-11-20 07:31:36 +0800
 ---
 
-这一篇不背工具类列表，而是从界面效果回到 CSS 原理：空间怎么分配，卡片为什么能自适应，颜色又如何保持统一。
+结合当前文章卡片、Hero、图标和双主题学习样式组织。
 
-> 本文是「实习博客实战」系列第 4 / 14 篇。文中的 src、docs、package.json 等路径均相对于拾页 Demo 项目根目录。
-
-> 版本说明：本篇保留静态 Demo 阶段的代码。当前全栈版本请从[第九篇]({% post_url 2026-11-20-intern-blog-09-database %})开始。
+> 本文是 NextBlog 全栈博客系列第 4 / 15 篇，内容对应当前全栈版本。
 
 ## 系列导航
 
-1. [Next.js博客（一）：项目搭建与 React 组件入门]({% post_url 2026-11-17-intern-blog-01-setup-react %})
-2. [Next.js博客（二）：Next.js 路由、静态导出与页面完整源码]({% post_url 2026-11-17-intern-blog-02-nextjs-pages %})
-3. [Next.js博客（三）：TypeScript 类型设计与文章数据建模]({% post_url 2026-11-17-intern-blog-03-typescript-data %})
-4. [Next.js博客（四）：Tailwind CSS 布局、响应式与封面组件]({% post_url 2026-11-17-intern-blog-04-tailwind-layout %})
-5. [Next.js博客（五）：用 React 实现搜索、分类与排序]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
-6. [Next.js博客（六）：Express、PostgreSQL 与 TypeORM 接入路线]({% post_url 2026-11-17-intern-blog-06-express-postgresql-typeorm %})
-7. [Next.js博客（七）：编译、验收、问题排查与实习练习]({% post_url 2026-11-17-intern-blog-07-build-check-practice %})
-8. [Next.js博客（八）：全部页面与组件源码归档]({% post_url 2026-11-17-intern-blog-08-pages-components-source %})
-9. [实习博客实战（九）：从静态页面走向 PostgreSQL 全栈博客]({% post_url 2026-11-20-intern-blog-09-database %})
-10. [实习博客实战（十）：Express、Cookie、Session 与权限边界]({% post_url 2026-11-20-intern-blog-10-auth-api %})
-11. [实习博客实战（十一）：全栈路由与每个页面完整源码]({% post_url 2026-11-20-intern-blog-11-pages %})
-12. [实习博客实战（十二）：搜索、编辑器、登录与评论组件详解]({% post_url 2026-11-20-intern-blog-12-components %})
-13. [实习博客实战（十三）：DaisyUI 卡片、Lucide 图标与深色主题]({% post_url 2026-11-20-intern-blog-13-theme %})
-14. [实习博客实战（十四）：接口测试、运行配置与发布检查]({% post_url 2026-11-20-intern-blog-14-tests %})
+1. [NextBlog（一）：全栈项目搭建与 React 入门]({% post_url 2026-11-17-intern-blog-01-setup-react %})
+2. [NextBlog（二）：Next.js 路由、布局与前后端边界]({% post_url 2026-11-17-intern-blog-02-nextjs-pages %})
+3. [NextBlog（三）：用真实业务理解 TypeScript]({% post_url 2026-11-17-intern-blog-03-typescript-data %})
+4. [NextBlog（四）：Tailwind CSS、DaisyUI 与简约页面]({% post_url 2026-11-17-intern-blog-04-tailwind-layout %})
+5. [NextBlog（五）：React 状态、搜索请求与表单交互]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
+6. [NextBlog（六）：Express、TypeORM 与真实数据库请求]({% post_url 2026-11-17-intern-blog-06-express-postgresql-typeorm %})
+7. [NextBlog（七）：运行验收、排错与生产边界]({% post_url 2026-11-17-intern-blog-07-build-check-practice %})
+8. [NextBlog（八）：串起登录、文章编辑与评论业务]({% post_url 2026-11-17-intern-blog-08-pages-components-source %})
+9. [NextBlog（九）：PostgreSQL 数据建模与迁移]({% post_url 2026-11-20-intern-blog-09-database %})
+10. [NextBlog（十）：Express、Cookie、Session 与权限边界]({% post_url 2026-11-20-intern-blog-10-auth-api %})
+11. [NextBlog（十一）：全栈路由与每个页面完整源码]({% post_url 2026-11-20-intern-blog-11-pages %})
+12. [NextBlog（十二）：搜索、编辑器、登录与评论组件详解]({% post_url 2026-11-20-intern-blog-12-components %})
+13. [NextBlog（十三）：DaisyUI 卡片、Lucide 图标与深色主题]({% post_url 2026-11-20-intern-blog-13-theme %})
+14. [NextBlog（十四）：接口测试、运行配置与发布检查]({% post_url 2026-11-20-intern-blog-14-tests %})
+15. [NextBlog（十五）：项目结构与完整源码汇总]({% post_url 2026-11-20-intern-blog-15-project-source %})
 
-## Tailwind CSS：用组合表达样式
+## 三种样式工具各自负责什么
 
-### 本项目使用 v4 配置
+Tailwind CSS 提供原子工具类，例如 sr-only 和 whitespace-pre-wrap。DaisyUI 在 Tailwind 上提供 btn、input、select、card 等组件类。globals.css 中的 article-card、home-hero 和 header-inner 则控制本站的排版与布局。
 
-`postcss.config.mjs` 注册 `@tailwindcss/postcss`，`src/app/globals.css` 首行是：
+读到 `className="btn btn-primary"` 时，btn 表示按钮基础规则，btn-primary 使用主题主色。读到 article-card 时，应到 globals.css 找项目自定义样式。当前项目使用了不少语义 CSS 类，不是把每条样式都写成 Tailwind 工具类。
 
-{% raw %}
-```css
-@import "tailwindcss";
-```
-{% endraw %}
+## Tailwind 4 与 DaisyUI 的入口
 
-Tailwind 在构建时扫描源代码中的类名，生成对应 CSS。因此它不是运行时逐条翻译 className。v4 的配置方式与很多旧版教程不同，不要混用 v3 的安装命令和配置。[官方 Next.js 安装指南](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
-
-### 拆开一张卡片
-
-`post-browser.tsx` 中卡片的类名可以按作用阅读：
-
-{% raw %}
-```tsx
-className="group overflow-hidden rounded-2xl border border-line
-           bg-white/60 transition-colors hover:border-accent/50"
-```
-{% endraw %}
-
-| 工具类 | 对应的视觉作用 |
-| --- | --- |
-| `overflow-hidden` | 裁切超出卡片的封面，让圆角生效 |
-| `rounded-2xl` | 较大的边框圆角 |
-| `border border-line` | 细边框，使用项目主题颜色 |
-| `bg-white/60` | 60% 不透明度的白色背景 |
-| `transition-colors` | 颜色变化使用过渡 |
-| `hover:border-accent/50` | 悬停时改变边框颜色 |
-| `group` | 让子元素可以响应父级的悬停状态 |
-| `group-hover:text-accent` | 父卡片悬停时，子标题改变颜色 |
-
-这些类可以组合；仍然需要理解 box model、flex、grid、overflow 等 CSS 概念。Tailwind 让你少起很多类名，但不会替你决定合理布局。
-
-### 响应式从小屏幕开始
-
-文章列表：
-
-{% raw %}
-```tsx
-className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2"
-```
-{% endraw %}
-
-基础是一列；到默认 md 断点（48rem）及以上变成两列。首页外层用了 `lg:grid-cols-[minmax(0,1fr)_260px]`：宽屏时左侧占剩余空间，右侧固定 260px；更窄时回到单列。`minmax(0,1fr)` 允许主内容缩小，避免长内容强行撑宽网格。
-
-`hidden md:flex` 表示小屏隐藏装饰，中等及以上屏幕显示 flex。注意 md 不是“只在平板”，而是“达到该宽度以及更宽”。
-
-### 间距、字号与任意值
-
-默认间距基于 0.25rem：`p-6` 通常是 1.5rem 内边距，`mt-5` 是 1.25rem 上边距。`text-sm` 同时设定字号和行高；正文使用 `leading-8` 增加阅读间距。
-
-方括号允许任意值，例如 `text-[11px]`、`min-h-[65vh]`。应优先使用统一的设计尺度，再在确实需要时使用任意值，避免每个元素都有不同的数值。
-
-### 主题变量与自定义 CSS
-
-在 `globals.css` 中：
-
-{% raw %}
-```css
-@theme {
-  --color-paper: #f8f7f3;
-  --color-ink: #272b27;
-  --color-accent: #526545;
-}
-```
-{% endraw %}
-
-Tailwind 据此提供 `bg-paper`、`text-ink`、`border-accent` 等类。修改一个变量即可调整整个网站的对应颜色。
-
-封面的轨道装饰、网格纹理属于重复而具体的视觉样式，所以放进 `.cover`、`.cover-orbit` 和 `.hero-grid` 等普通 CSS 类。Tailwind 可以与普通 CSS 共存，不需要强迫一切都写成工具类。
-
-### 不要拼接无法扫描的类名
-
-不建议写 `bg-${color}-500`。构建器不执行你的 JavaScript 来枚举所有可能字符串，因此可能漏掉样式。使用完整类名映射，例如 `{ green: "bg-green-500", blue: "bg-blue-500" }`。
-
-本项目 `cover-${kind}` 对应的样式是 globals.css 中明确写出的普通 CSS 规则；不是期待 Tailwind 自动生成这些动态类。分类按钮的三元表达式则包含两组完整的工具类字符串，可被扫描。
-
-## 样式与封面源码
-
-### src/app/globals.css
-
-Tailwind 入口、项目主题、公共焦点样式以及封面装饰都在这里。普通 CSS 与工具类各自负责适合的部分。
-
-以下为当前 Demo 中该文件的完整源码。路径相对于 Demo 项目根目录，不是本博客的目录。
+代码位置：`src/app/globals.css`（节选）。
 
 {% raw %}
 ```css
 @import "tailwindcss";
-
-@theme {
-  --color-paper: #f8f7f3;
-  --color-ink: #272b27;
-  --color-muted: #777b73;
-  --color-line: #e4e5dc;
-  --color-accent: #526545;
-  --font-sans: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-body {
-  background: var(--color-paper);
-  color: var(--color-ink);
-}
-button,
-a,
-input,
-select {
-  -webkit-tap-highlight-color: transparent;
-}
-button,
-select {
-  cursor: pointer;
-}
-:focus-visible {
-  outline: 2px solid #526545;
-  outline-offset: 5px;
-}
-::selection {
-  background: #dce6ce;
-}
-.nav-link {
-  color: #777b73;
-  transition: color 0.2s;
-}
-.nav-link:hover {
-  color: #272b27;
-}
-.cover {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-.cover-next {
-  background: #252d29;
-  color: #f5f4e9;
-}
-.cover-typescript {
-  background: #e2eaf0;
-  color: #356584;
-}
-.cover-tailwind {
-  background: #dfebe6;
-  color: #3d7a72;
-}
-.cover-database {
-  background: #e5e4ed;
-  color: #656080;
-}
-.cover-express {
-  background: #e8e7dd;
-  color: #696b45;
-}
-.cover-notes {
-  background: #eee0d2;
-  color: #936d50;
-}
-.cover-orbit {
-  position: absolute;
-  width: 310px;
-  height: 310px;
-  border: 1px solid currentColor;
-  opacity: 0.09;
-  border-radius: 50%;
-  right: -100px;
-  top: -130px;
-}
-.orbit-two {
-  width: 400px;
-  height: 400px;
-  right: -145px;
-  top: -175px;
-}
-.hero-grid {
-  background-image: radial-gradient(#8c967c40 1px, transparent 1px);
-  background-size: 17px 17px;
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  * {
-    transition-duration: 0s !important;
-  }
+@plugin "daisyui" {
+  themes: false;
+  logs: false;
 }
 ```
 {% endraw %}
 
-### src/components/cover.tsx
 
-kind 使用 Post["cover"] 保持类型一致；themes 把封面名称与图标集中管理；large 控制精选封面和列表封面的尺寸。
+CSS 文件先导入 Tailwind，再加载 DaisyUI 插件。themes: false 关闭内置主题选择，项目随后声明自己的两套主题。这里采用当前仓库的 Tailwind 4 写法，复制旧版本 tailwind.config.js 教程前需要核对版本。
 
-以下为当前 Demo 中该文件的完整源码。路径相对于 Demo 项目根目录，不是本博客的目录。
+代码位置：`src/app/globals.css`（节选）。
+
+{% raw %}
+```css
+@plugin "daisyui/theme" {
+  name: "fieldnotes";
+  default: true;
+  color-scheme: light;
+  --color-base-100: #faf9f6;
+  --color-base-200: #efeee8;
+  --color-base-300: #dedfd7;
+  --color-base-content: #252c2a;
+  --color-primary: #2f7068;
+  --color-primary-content: #ffffff;
+  --color-secondary: #62756d;
+  --color-secondary-content: #ffffff;
+  --color-accent: #2f7068;
+  --color-accent-content: #ffffff;
+  --color-neutral: #283a35;
+  --color-neutral-content: #ffffff;
+  --color-info: #326f93;
+  --color-info-content: #ffffff;
+  --color-success: #357257;
+  --color-success-content: #ffffff;
+  --color-warning: #d8ac53;
+  --color-warning-content: #252c2a;
+  --color-error: #a33131;
+  --color-error-content: #ffffff;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.65rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+```
+{% endraw %}
+
+
+base-100 是页面底色，base-content 是正文颜色，primary 是强调色，primary-content 是强调色表面上的文字色。圆角、边框和控件尺寸也由变量统一。深色 fieldnotes-dark 采用同名变量，因此按钮、表单和卡片可以一起改变，不必为每个按钮单独写黑色样式。
+
+## Hero 为什么既有留白又有层次
+
+代码位置：`src/components/home-hero.tsx`（完整文件）。
 
 {% raw %}
 ```tsx
-import {
-  ArrowUpRight,
-  Braces,
-  Database,
-  Feather,
-  Layers,
-  Wind,
-} from "lucide-react";
-import type { Post } from "@/types/post";
-
-const themes = {
-  next: {
-    label: "NEXT.JS",
-    subtitle: "Build something worth sharing.",
-    icon: Layers,
-  },
-  typescript: {
-    label: "TypeScript",
-    subtitle: "A little structure. A lot of clarity.",
-    icon: Braces,
-  },
-  tailwind: {
-    label: "tailwindcss",
-    subtitle: "Small utilities. Endless possibilities.",
-    icon: Wind,
-  },
-  database: {
-    label: "PostgreSQL",
-    subtitle: "A place for every idea.",
-    icon: Database,
-  },
-  express: {
-    label: "express",
-    subtitle: "Connect the dots.",
-    icon: ArrowUpRight,
-  },
-  notes: {
-    label: "Small steps.",
-    subtitle: "Keep learning. Keep building.",
-    icon: Feather,
-  },
-};
-
-export function Cover({
-  kind,
-  large = false,
-}: {
-  kind: Post["cover"];
-  large?: boolean;
-}) {
-  const { label, subtitle, icon: Icon } = themes[kind];
+/** 纯 CSS 入场动效，无需额外动画库；减少动态效果时直接显示完整文字。 */
+export function HomeHero() {
   return (
-    <div
-      aria-hidden="true"
-      className={`cover cover-${kind} ${large ? "min-h-72 md:min-h-96" : "h-44"}`}
-    >
-      <span className="cover-orbit" />
-      <span className="cover-orbit orbit-two" />
-      <div className="relative z-10">
-        <Icon
-          size={large ? 48 : 32}
-          strokeWidth={1.2}
-          className="mb-5 opacity-80"
-        />
-        <p
-          className={`${large ? "text-4xl md:text-5xl" : "text-3xl"} font-semibold tracking-tight`}
-        >
-          {label}
-          <span className="text-orange-400">
-            {kind === "next" ? " ↗" : ""}
+    <section className="hero home-hero" aria-labelledby="home-title">
+      <div className="hero-content home-hero-content">
+        <h1 id="home-title" aria-label="落笔成文，拾页成光。">
+          <span className="hero-line">
+            <span>落笔成文，</span>
           </span>
-        </p>
-        <p className="mt-3 font-mono text-[10px] tracking-wide opacity-60">
-          {subtitle}
-        </p>
+          <span className="hero-line">
+            <span>
+              拾页<span className="hero-accent">成光。</span>
+            </span>
+          </span>
+        </h1>
+        <p className="hero-description">记录技术与生活。</p>
+        <a className="btn btn-outline hero-read" href="#articles">
+          开始阅读
+        </a>
       </div>
-      <span className="absolute right-5 bottom-4 font-mono text-[9px] opacity-40">
-        FIELDNOTES / {kind.toUpperCase()}
-      </span>
-    </div>
+    </section>
   );
 }
 ```
 {% endraw %}
 
-## 本篇练习
 
-把 --color-accent 改为另一种深色，观察标题、边框和按钮的变化。再把文章网格的 md:grid-cols-2 暂时移除，比较 375px、768px 和 1440px 下的布局。记得恢复样式后再构建。
+这个组件负责语义内容：一个主标题、一句介绍、一个阅读锚点。排版宽度、间距、渐显时机在 globals.css 中控制。标题分成两行并只强调部分文字，可以在少量内容下建立视觉层级。
+
+`href="#articles"` 跳到文章区域，不触发新的后端业务。CSS 在 prefers-reduced-motion 条件下关闭渐显并显示内容，避免读者因为减少动态效果设置而看不到文字。动画应作为补充，不能承担内容是否可读的职责。
+
+## 文章卡片与响应式布局
+
+ArticleList 渲染每篇文章时使用 article-card，同时保留标题链接、摘要、分类与日期。卡片用细边框、圆角和轻微悬停反馈区分内容，不再需要大段装饰性说明文字。分类标签使用 DaisyUI badge，辅助图标来自 lucide-react。
+
+桌面文章区域使用网格，700px 以下切成单列。手机导航允许换行，主题按钮放在品牌右侧；搜索框与分类控件要共同适应可用宽度。仅观察桌面缩略图不够，还要实际检查 375px 下文档宽度是否超出视口。
+
+## 图标、标签与可访问名称
+
+Search、Folder、CalendarDays、Pencil、Trash2 等图标对应搜索、分类、日期、编辑和删除。旁边已有文字的图标设置 aria-hidden，避免屏幕阅读器重复朗读。主题按钮只有图标，所以由 aria-label 提供“切换深色主题”或“切换浅色主题”。
+
+搜索框的说明使用 sr-only：视觉上隐藏，但仍为输入框提供名称。不要将所有小字一律删除；重复装饰文案可以精简，密码要求、错误提示与控件标签仍然影响用户完成操作。
+
+## 深浅主题不只是 CSS
+
+theme.ts 在首帧读取主题偏好，ThemeToggle 处理点击、系统偏好、跨标签同步及 localStorage。支持 View Transition 的浏览器使用圆形展开；不支持或开启减少动态效果时直接切换。第十三篇逐段解释这一实现。
+
+练习：调整主题 primary 后检查按钮、图标和标签；再切到深色检查正文、边框、输入框、代码块和错误状态。调整卡片间距时同时检查桌面与手机，不要只扩大固定宽度。
 
 ## 继续阅读
 
-[← 上一篇：实习博客实战（三）：TypeScript 类型设计与文章数据建模]({% post_url 2026-11-17-intern-blog-03-typescript-data %})
+[上一篇]({% post_url 2026-11-17-intern-blog-03-typescript-data %})
 
-[下一篇：实习博客实战（五）：用 React 实现搜索、分类与排序 →]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
+[下一篇]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
+
+[项目结构与完整源码汇总]({% post_url 2026-11-20-intern-blog-15-project-source %})

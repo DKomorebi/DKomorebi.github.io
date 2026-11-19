@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 实习博客实战（九）：从静态页面走向 PostgreSQL 全栈博客
+title: NextBlog（九）：PostgreSQL 数据建模与迁移
 date: 2026-11-20 00:09:00 +0800
 categories:
 - 实习项目
@@ -14,32 +14,34 @@ flow: false
 mathjax: false
 mindmap: false
 mindmap2: false
+last_modified_at: 2026-11-20 07:31:36 +0800
 ---
 
 数据库迁移、实体建模、文章持久化与管理员初始化。
 
-> 本文是「实习博客实战」系列第 9 / 14 篇。源码路径相对于 NextBlog 项目根目录。
+> 本文是 NextBlog 全栈博客系列第 9 / 15 篇，内容对应当前全栈版本。
 
 ## 系列导航
 
-1. [Next.js博客（一）：项目搭建与 React 组件入门]({% post_url 2026-11-17-intern-blog-01-setup-react %})
-2. [Next.js博客（二）：Next.js 路由、静态导出与页面完整源码]({% post_url 2026-11-17-intern-blog-02-nextjs-pages %})
-3. [Next.js博客（三）：TypeScript 类型设计与文章数据建模]({% post_url 2026-11-17-intern-blog-03-typescript-data %})
-4. [Next.js博客（四）：Tailwind CSS 布局、响应式与封面组件]({% post_url 2026-11-17-intern-blog-04-tailwind-layout %})
-5. [Next.js博客（五）：用 React 实现搜索、分类与排序]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
-6. [Next.js博客（六）：Express、PostgreSQL 与 TypeORM 接入路线]({% post_url 2026-11-17-intern-blog-06-express-postgresql-typeorm %})
-7. [Next.js博客（七）：编译、验收、问题排查与实习练习]({% post_url 2026-11-17-intern-blog-07-build-check-practice %})
-8. [Next.js博客（八）：全部页面与组件源码归档]({% post_url 2026-11-17-intern-blog-08-pages-components-source %})
-9. [实习博客实战（九）：从静态页面走向 PostgreSQL 全栈博客]({% post_url 2026-11-20-intern-blog-09-database %})
-10. [实习博客实战（十）：Express、Cookie、Session 与权限边界]({% post_url 2026-11-20-intern-blog-10-auth-api %})
-11. [实习博客实战（十一）：全栈路由与每个页面完整源码]({% post_url 2026-11-20-intern-blog-11-pages %})
-12. [实习博客实战（十二）：搜索、编辑器、登录与评论组件详解]({% post_url 2026-11-20-intern-blog-12-components %})
-13. [实习博客实战（十三）：DaisyUI 卡片、Lucide 图标与深色主题]({% post_url 2026-11-20-intern-blog-13-theme %})
-14. [实习博客实战（十四）：接口测试、运行配置与发布检查]({% post_url 2026-11-20-intern-blog-14-tests %})
+1. [NextBlog（一）：全栈项目搭建与 React 入门]({% post_url 2026-11-17-intern-blog-01-setup-react %})
+2. [NextBlog（二）：Next.js 路由、布局与前后端边界]({% post_url 2026-11-17-intern-blog-02-nextjs-pages %})
+3. [NextBlog（三）：用真实业务理解 TypeScript]({% post_url 2026-11-17-intern-blog-03-typescript-data %})
+4. [NextBlog（四）：Tailwind CSS、DaisyUI 与简约页面]({% post_url 2026-11-17-intern-blog-04-tailwind-layout %})
+5. [NextBlog（五）：React 状态、搜索请求与表单交互]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
+6. [NextBlog（六）：Express、TypeORM 与真实数据库请求]({% post_url 2026-11-17-intern-blog-06-express-postgresql-typeorm %})
+7. [NextBlog（七）：运行验收、排错与生产边界]({% post_url 2026-11-17-intern-blog-07-build-check-practice %})
+8. [NextBlog（八）：串起登录、文章编辑与评论业务]({% post_url 2026-11-17-intern-blog-08-pages-components-source %})
+9. [NextBlog（九）：PostgreSQL 数据建模与迁移]({% post_url 2026-11-20-intern-blog-09-database %})
+10. [NextBlog（十）：Express、Cookie、Session 与权限边界]({% post_url 2026-11-20-intern-blog-10-auth-api %})
+11. [NextBlog（十一）：全栈路由与每个页面完整源码]({% post_url 2026-11-20-intern-blog-11-pages %})
+12. [NextBlog（十二）：搜索、编辑器、登录与评论组件详解]({% post_url 2026-11-20-intern-blog-12-components %})
+13. [NextBlog（十三）：DaisyUI 卡片、Lucide 图标与深色主题]({% post_url 2026-11-20-intern-blog-13-theme %})
+14. [NextBlog（十四）：接口测试、运行配置与发布检查]({% post_url 2026-11-20-intern-blog-14-tests %})
+15. [NextBlog（十五）：项目结构与完整源码汇总]({% post_url 2026-11-20-intern-blog-15-project-source %})
 
-## 从静态数据到持久化
+## 数据持久化的请求链路
 
-原来的文章由 TypeScript 数组提供，修改内容需要重新构建。现在页面通过 /api/articles 读取数据库，管理员保存文章后即可被读者看到。浏览器 → Next.js 同源代理 → Express → TypeORM → PostgreSQL，这是当前项目的数据流。
+页面通过 /api/articles 读取数据库，管理员保存文章后即可被读者看到。浏览器 → Next.js 同源代理 → Express → TypeORM → PostgreSQL，这是当前项目的数据流。
 
 数据库包含 users、articles、comments、sessions 四张业务表。用户邮箱和文章 slug 有唯一约束；评论通过外键关联文章和用户，删除文章会级联删除评论。不要仅靠前端先查一次来防止重复，因为两个并发请求仍可能同时写入；数据库约束才是最后一道保证。
 
@@ -51,7 +53,7 @@ entities.ts 用 EntitySchema 描述对象与表的映射，避免在初学阶段
 
 先创建自己的空数据库，根据 .env.example 创建本地 .env，生成至少 32 字符的随机 SESSION_SECRET。执行 pnpm db:migrate，再执行 pnpm db:seed 导入示例文章。seed 按 slug 检查是否存在，不会覆盖已经编辑过的同名文章。密码与真实连接信息不能提交到仓库。
 
-在网页注册账号后运行 pnpm admin 你的注册邮箱，再刷新页面。注册接口始终创建 user，管理员由服务器终端明确授予；不会让第一个访客自动成为管理员。示例数据仍保留静态阶段的教学内容，它们是文章内容，不代表系统仍在使用模拟存储。
+在网页注册账号后运行 pnpm admin 你的注册邮箱，再刷新页面。注册接口始终创建 user，管理员由服务器终端明确授予；不会让第一个访客自动成为管理员。示例数据只在 seed 时导入；文章列表与正文在运行时从数据库读取。
 
 ## 练习
 
@@ -300,3 +302,5 @@ API_ORIGIN=http://127.0.0.1:4000
 [上一篇]({% post_url 2026-11-17-intern-blog-08-pages-components-source %})
 
 [下一篇]({% post_url 2026-11-20-intern-blog-10-auth-api %})
+
+[项目结构与完整源码汇总]({% post_url 2026-11-20-intern-blog-15-project-source %})
