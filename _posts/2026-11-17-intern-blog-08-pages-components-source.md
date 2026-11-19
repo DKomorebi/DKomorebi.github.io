@@ -18,18 +18,26 @@ mindmap2: false
 
 前面的章节按知识点讲解代码，这一篇把全部页面和组件集中归档。每段代码都从当前 Demo 的真实文件读取，保留完整实现，方便按文件查找、对照和复制。
 
-> 本文是「实习博客实战」系列第 8 / 8 篇。以下路径都相对于拾页 Demo 项目根目录。这些代码在本篇中作为代码块展示，不会在 Jekyll 博客中直接执行。
+> 本文是「实习博客实战」系列第 8 / 14 篇。以下路径都相对于拾页 Demo 项目根目录。这些代码在本篇中作为代码块展示，不会在 Jekyll 博客中直接执行。
+
+> 版本说明：本篇保留静态 Demo 阶段的代码。当前全栈版本请从[第九篇]({% post_url 2026-11-20-intern-blog-09-database %})开始。
 
 ## 系列导航
 
-1. [实习博客实战（一）：项目搭建与 React 组件入门]({% post_url 2026-11-17-intern-blog-01-setup-react %})
-2. [实习博客实战（二）：Next.js 路由、静态导出与页面完整源码]({% post_url 2026-11-17-intern-blog-02-nextjs-pages %})
-3. [实习博客实战（三）：TypeScript 类型设计与文章数据建模]({% post_url 2026-11-17-intern-blog-03-typescript-data %})
-4. [实习博客实战（四）：Tailwind CSS 布局、响应式与封面组件]({% post_url 2026-11-17-intern-blog-04-tailwind-layout %})
-5. [实习博客实战（五）：用 React 实现搜索、分类与排序]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
-6. [实习博客实战（六）：Express、PostgreSQL 与 TypeORM 接入路线]({% post_url 2026-11-17-intern-blog-06-express-postgresql-typeorm %})
-7. [实习博客实战（七）：编译、验收、问题排查与实习练习]({% post_url 2026-11-17-intern-blog-07-build-check-practice %})
-8. [实习博客实战（八）：全部页面与组件源码归档]({% post_url 2026-11-17-intern-blog-08-pages-components-source %})
+1. [Next.js博客（一）：项目搭建与 React 组件入门]({% post_url 2026-11-17-intern-blog-01-setup-react %})
+2. [Next.js博客（二）：Next.js 路由、静态导出与页面完整源码]({% post_url 2026-11-17-intern-blog-02-nextjs-pages %})
+3. [Next.js博客（三）：TypeScript 类型设计与文章数据建模]({% post_url 2026-11-17-intern-blog-03-typescript-data %})
+4. [Next.js博客（四）：Tailwind CSS 布局、响应式与封面组件]({% post_url 2026-11-17-intern-blog-04-tailwind-layout %})
+5. [Next.js博客（五）：用 React 实现搜索、分类与排序]({% post_url 2026-11-17-intern-blog-05-react-interactions %})
+6. [Next.js博客（六）：Express、PostgreSQL 与 TypeORM 接入路线]({% post_url 2026-11-17-intern-blog-06-express-postgresql-typeorm %})
+7. [Next.js博客（七）：编译、验收、问题排查与实习练习]({% post_url 2026-11-17-intern-blog-07-build-check-practice %})
+8. [Next.js博客（八）：全部页面与组件源码归档]({% post_url 2026-11-17-intern-blog-08-pages-components-source %})
+9. [实习博客实战（九）：从静态页面走向 PostgreSQL 全栈博客]({% post_url 2026-11-20-intern-blog-09-database %})
+10. [实习博客实战（十）：Express、Cookie、Session 与权限边界]({% post_url 2026-11-20-intern-blog-10-auth-api %})
+11. [实习博客实战（十一）：全栈路由与每个页面完整源码]({% post_url 2026-11-20-intern-blog-11-pages %})
+12. [实习博客实战（十二）：搜索、编辑器、登录与评论组件详解]({% post_url 2026-11-20-intern-blog-12-components %})
+13. [实习博客实战（十三）：DaisyUI 卡片、Lucide 图标与深色主题]({% post_url 2026-11-20-intern-blog-13-theme %})
+14. [实习博客实战（十四）：接口测试、运行配置与发布检查]({% post_url 2026-11-20-intern-blog-14-tests %})
 
 ## 使用说明
 
@@ -1308,3 +1316,6 @@ pnpm preview
 [← 上一篇：编译、验收与练习]({% post_url 2026-11-17-intern-blog-07-build-check-practice %})
 
 [回到第一篇：项目搭建与 React 入门]({% post_url 2026-11-17-intern-blog-01-setup-react %})
+
+
+[下一篇：走向全栈]({% post_url 2026-11-20-intern-blog-09-database %})
