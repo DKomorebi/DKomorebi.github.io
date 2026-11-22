@@ -43,3 +43,7 @@ description: 四组十二篇详细报告，从具体文件理解 React、Next.js
 10. [数据库连接（一）：从 .env 到 PostgreSQL 的每一步]({% post_url 2026-11-22-nextblog-deep-10-database-config %})
 11. [数据库连接（二）：连接池、Session 存储与登录持久化]({% post_url 2026-11-22-nextblog-deep-11-pools-session %})
 12. [数据库连接（三）：迁移、初始化、健康检查与故障定位]({% post_url 2026-11-22-nextblog-deep-12-database-operations %})
+
+## 从哪里开始动手
+
+[从零搭建的思路、实施步骤与验收路线]({% post_url 2026-11-23-nextblog-build-roadmap %})按页面、接口、数据库、权限和验收安排实际动手顺序。

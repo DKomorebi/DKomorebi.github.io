@@ -148,3 +148,7 @@ ArticleList 也用于归档页和管理页，通过 archive、manage 属性选�
 [下一篇]({% post_url 2026-11-17-intern-blog-02-nextjs-pages %})
 
 [项目结构与完整源码汇总]({% post_url 2026-11-20-intern-blog-15-project-source %})
+
+## 从哪里开始动手
+
+[从零搭建的思路、实施步骤与验收路线]({% post_url 2026-11-23-nextblog-build-roadmap %})按页面、接口、数据库、权限和验收安排实际动手顺序。
