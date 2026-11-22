@@ -21,6 +21,10 @@ last_modified_at: 2026-11-20 07:31:36 +0800
 
 > 本文是 NextBlog 全栈博客系列第 15 / 15 篇，内容对应当前全栈版本。
 
+## 深入学习报告
+
+如果你还不清楚 React 与 Next.js、Express 的 TypeScript 运行方式、TypeORM 或数据库连接，可以从[四组十二篇专题报告]({% post_url 2026-11-22-nextblog-deep-00-guide %})继续学习。每篇按项目文件讲解，并提供阅读练习与参考答案。
+
 ## 系列导航
 
 1. [NextBlog（一）：全栈项目搭建与 React 入门]({% post_url 2026-11-17-intern-blog-01-setup-react %})
