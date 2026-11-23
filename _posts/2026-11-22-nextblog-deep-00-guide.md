@@ -47,3 +47,7 @@ description: 四组十二篇详细报告，从具体文件理解 React、Next.js
 ## 从哪里开始动手
 
 [从零搭建的思路、实施步骤与验收路线]({% post_url 2026-11-23-nextblog-build-roadmap %})按页面、接口、数据库、权限和验收安排实际动手顺序。
+
+## DDD 与独立后端构建
+
+[Express + TypeScript + DDD 教学与构建文档]({% post_url 2026-11-23-express-ts-ddd-00-guide %})解释原模板、现有博客分层与 node_modules 的区别。
