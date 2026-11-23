@@ -16,6 +16,9 @@ mindmap: false
 mindmap2: false
 ---
 
+> **2026-11-24 教程更新：** 本文保留为历史阶段资料。请优先阅读[《NextBlog 从零到逐方法：详细教程》]({% post_url 2026-11-24-nextblog-zero-00-guide %})，新版逐个解释页面方法、React 事件、Express/TypeORM、DDD 的实际边界，以及确认密码和邮箱验证码。本文早期源码不代表最新注册接口，完整当前源码见新版第二十、二十一篇。
+
+
 这组文档包含四篇：先理解同名模板的真实架构，再按 Windows 环境搭建，随后规划现有博客的 TypeORM + Session 迁移，最后解释 node_modules。
 
 同名参考仓库为 [gonzaloplaza/express-ts-ddd](https://github.com/gonzaloplaza/express-ts-ddd)，核对提交 0de3752。若团队指的是其他脚手架，应按实际仓库重新核对。DDD 是设计思路，不强制使用这个模板或某一种 ORM。

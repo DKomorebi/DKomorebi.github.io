@@ -16,6 +16,9 @@ date: 2026-11-22 00:03:00 +0800
 description: A · React 与 Next.js：结合项目源码、逐段讲解和练习答案深入学习。
 ---
 
+> **2026-11-24 教程更新：** 本文保留为历史阶段资料。请优先阅读[《NextBlog 从零到逐方法：详细教程》]({% post_url 2026-11-24-nextblog-zero-00-guide %})，新版逐个解释页面方法、React 事件、Express/TypeORM、DDD 的实际边界，以及确认密码和邮箱验证码。本文早期源码不代表最新注册接口，完整当前源码见新版第二十、二十一篇。
+
+
 > A · React 与 Next.js · 第 3 / 12 篇。源码基准：[NextBlog 99b069b](https://github.com/DKomorebi/NextBlog/tree/99b069b66012e2000fa25201c72bd455003dfb07)。
 
 ## 选定一个具体案例

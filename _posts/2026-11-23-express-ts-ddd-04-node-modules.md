@@ -16,6 +16,9 @@ mindmap: false
 mindmap2: false
 ---
 
+> **2026-11-24 教程更新：** 本文保留为历史阶段资料。请优先阅读[《NextBlog 从零到逐方法：详细教程》]({% post_url 2026-11-24-nextblog-zero-00-guide %})，新版逐个解释页面方法、React 事件、Express/TypeORM、DDD 的实际边界，以及确认密码和邮箱验证码。本文早期源码不代表最新注册接口，完整当前源码见新版第二十、二十一篇。
+
+
 ## 先纠正一个观察
 
 当前博客并不是没有 node_modules。本机根目录 E:/文档/BSH/blog/node_modules 存在，server/node_modules 不存在；GitHub 仓库里看不到它，是因为 .gitignore 忽略安装产物。这是两个不同问题：依赖装在哪里，以及依赖是否提交。

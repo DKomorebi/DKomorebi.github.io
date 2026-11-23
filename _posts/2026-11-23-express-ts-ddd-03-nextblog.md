@@ -16,6 +16,9 @@ mindmap: false
 mindmap2: false
 ---
 
+> **2026-11-24 教程更新：** 本文保留为历史阶段资料。请优先阅读[《NextBlog 从零到逐方法：详细教程》]({% post_url 2026-11-24-nextblog-zero-00-guide %})，新版逐个解释页面方法、React 事件、Express/TypeORM、DDD 的实际边界，以及确认密码和邮箱验证码。本文早期源码不代表最新注册接口，完整当前源码见新版第二十、二十一篇。
+
+
 ## 迁移目标与当前事实
 
 当前 server/app.ts 集中处理 Session、CSRF、输入校验、权限、文章和评论查询。server/entities.ts 是 TypeORM EntitySchema，db.ts 创建 DataSource，manage.ts 管理迁移与管理员授权。这是可运行的应用，但还没有独立的领域层与应用用例。

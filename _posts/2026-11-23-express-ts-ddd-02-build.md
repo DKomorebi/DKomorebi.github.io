@@ -16,6 +16,9 @@ mindmap: false
 mindmap2: false
 ---
 
+> **2026-11-24 教程更新：** 本文保留为历史阶段资料。请优先阅读[《NextBlog 从零到逐方法：详细教程》]({% post_url 2026-11-24-nextblog-zero-00-guide %})，新版逐个解释页面方法、React 事件、Express/TypeORM、DDD 的实际边界，以及确认密码和邮箱验证码。本文早期源码不代表最新注册接口，完整当前源码见新版第二十、二十一篇。
+
+
 ## 明确两条路线的区别
 
 本篇是原模板路线，使用 Prisma 与 Cognito，在独立练习目录和独立数据库中操作。第三篇是当前 NextBlog 的 TypeORM + Session 分层路线。本次交付是教学文档和最小示例，没有把运行中的博客后端替换成原模板。
